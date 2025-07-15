@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Buggy‑Pedia</h1>
+<ul>
+{% for bug in bugs %}
+    <li>{{ bug.id }}: {{ bug.title }} ({{ bug.severity }})</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Calculate Severity</h2>
+<form method="post">
+    <label>Impact (1‑10): <input name="impact" type="number" value="10" min="1" max="10"></label><br>
+    <label>Urgency:
+        <select name="urgency">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high" selected>high</option>
+        </select>
+    </label><br>
+    <button type="submit">Calculate</button>
+</form>
+{% endblock %}

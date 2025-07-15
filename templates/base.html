@@ -1,0 +1,11 @@
+<!doctype html>
+<title>Buggy‑Pedia</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<body>
+<nav>
+    <a href="{{ url_for('index') }}">Home</a> |
+    <a href="{{ url_for('calculate_severity') }}">Calculate Severity</a>
+</nav>
+<hr>
+{% block content %}{% endblock %}
+</body>
