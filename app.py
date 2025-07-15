@@ -26,9 +26,23 @@ def calculate_severity():
 
 def format_username(email):
     """Takes jane.doe@example.com -> Doe, Jane"""
-    name_part = email.split("@")
-    first, last = name_part.split(".")  # This will raise at runtime
+    name_part = email.split("@")[0]  # Fixed: get the name part before @
+    first, last = name_part.split(".")  # This will still raise for edge cases
     return f"{last.capitalize()}, {first.capitalize()}"
+
+def calculate_bug_priority(severity, assigned_team_size):
+    """Calculate bug priority based on severity and team size.
+    Higher severity and smaller team = higher priority"""
+    priority_matrix = {
+        "low": 1,
+        "medium": 2, 
+        "high": 3,
+        "critical": 4
+    }
+    base_priority = priority_matrix.get(severity.lower(), 1)
+    # Division by zero potential here!
+    adjusted_priority = base_priority * (10 / assigned_team_size)
+    return round(adjusted_priority, 2)
 
 if __name__ == "__main__":
     app.run(debug=True)
